@@ -1,9 +1,15 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from "next/image";
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <main className={styles.main}>
+      <div className={styles.description}>
+        <h2>Pokedex</h2>
+        <div>
+          <a href="/purify-ts">Purify TS</a>
+        </div>
+      </div>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
@@ -15,7 +21,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -91,5 +97,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
