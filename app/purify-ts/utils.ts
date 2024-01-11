@@ -51,6 +51,7 @@ export const findStrongestMove = (search: string) =>
   EitherAsync.fromPromise(() => fetchPokemonData(search))
     // Get all the moves
     .map((pokemon) => pokemon.moves)
+
     // Using chain bebause we are returning another level of Either here, it's the `flatMap` of purify-ts
     .chain(async (moves) => {
       // Creating an array or URLs
@@ -58,5 +59,12 @@ export const findStrongestMove = (search: string) =>
       // Like Promise.all but handles Either
       return EitherAsync.all(seq.map((s) => fetchMove(s)));
     })
+
+    // OR
+    // .map(async (moves) => {
+    //   // Like Promise.all but only returns Right (success)
+    //   return EitherAsync.rights(moves.map((m) => fetchMove(m.move.url)));
+    // })
+
     // Find strongest moves (reduced value)
     .map(findStrongest);
