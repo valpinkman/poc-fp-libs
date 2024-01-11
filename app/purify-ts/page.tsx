@@ -2,13 +2,13 @@
 
 import { SyntheticEvent, useRef, useState } from "react";
 import { Move } from "../common/types";
-import "./global.css";
-import styles from "./page.module.css";
+import "../common/global.css";
+import styles from "../common/page.module.css";
 import { findStrongestMove } from "./utils";
 
 export default function Page() {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [result, setResult] = useState<Move>();
+  const [result, setResult] = useState<Move | null>();
   const [pokemon, setPokemon] = useState<string>();
 
   const onClick = async (
@@ -20,6 +20,8 @@ export default function Page() {
     const p = await findStrongestMove(inputRef?.current?.value);
     if (p.isLeft()) {
       console.log("we got an error");
+      setResult(null);
+      setPokemon("");
     }
 
     if (p.isRight()) {

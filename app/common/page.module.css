@@ -18,6 +18,7 @@
   flex-grow: 1;
   padding: 5px;
   outline: none;
+  border-radius: 5px;
 }
 
 .button {
@@ -26,4 +27,5 @@
   color: white;
   border-color: #f0c;
   margin-left: 20px;
+  border-radius: 5px;
 }

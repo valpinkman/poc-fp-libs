@@ -6,9 +6,15 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <h2>Pokedex</h2>
-        <div>
-          <a href="/purify-ts">Purify TS</a>
-        </div>
+
+        <ul>
+          <li>
+            <a href="/purify-ts">Purify TS</a>
+          </li>
+          <li>
+            <a href="/effect">Effect</a>
+          </li>
+        </ul>
       </div>
       <div className={styles.description}>
         <p>

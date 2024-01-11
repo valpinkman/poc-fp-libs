@@ -6,24 +6,18 @@ const POKEAPI_BASE = "https://pokeapi.co/api/v2";
 const POKEMON_DOMAIN = "pokemon";
 
 export const fetchPokemonData = (
-  search: string
+  pokemon: string
 ): EitherAsync<PokeApiError, Pokemon> =>
   EitherAsync(async ({ throwE }) => {
-    const url = `${POKEAPI_BASE}/${POKEMON_DOMAIN}/${search}`;
+    const url = `${POKEAPI_BASE}/${POKEMON_DOMAIN}/${pokemon}`;
     try {
       const res = await fetch(url);
       const json = await res.json();
       return json;
     } catch (reason: unknown) {
-      throwE(new PokeApiError(`Could not find informations for ${search}`));
+      throwE(new PokeApiError(`Could not find informations for ${pokemon}`));
     }
   });
-
-export const getStrongestMove = (
-  moves: Either<PokeApiError, MoveMeta[]>
-): Either<PokeApiError, any> => {
-  return moves;
-};
 
 export const fetchMove = (url: string): EitherAsync<PokeApiError, Move> =>
   EitherAsync(async ({ throwE }) => {
